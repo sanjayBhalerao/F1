@@ -10,6 +10,8 @@ view HTTP Traffice
     //localhost to localhost
     tcpdump -A -s 0 'tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)' -i lo
     
+    tcpdump port http or port ftp or port smtp or port imap or port pop3 -l -A | grep -i 'pass=|pwd=|log=|login=|user=|username=|pw=|passw=|passwd=|password:\user:|username:|password:|login:|pass |user ' --color=auto --line-buffered -B20
+    
     
 }
 
